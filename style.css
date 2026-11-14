@@ -22,7 +22,7 @@ body,
     justify-content: center;
     align-items: center;
     text-align: center;
-    background-image: linear-gradient(rgba(8,84,130,0.4), rgba(56, 19, 4, 0.54)), url("img/WAIT.png");;
+    background-image: linear-gradient(rgba(8,84,130,0.4), rgba(56, 19, 4, 0.54)), url("img/WAIT.gif");;
    /*  background-image: linear-gradient(rgba(8,84,130,0.4), rgba(56, 19, 4, 0.54)), url("img/landscape.jpg"); */
     background-size: cover;
     background-position: center;
