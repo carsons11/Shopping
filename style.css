@@ -43,15 +43,15 @@ body,
 }
 
 .card h2{
-    font-size: 20px;
+    font-size: 15px;
 }
 
 .card p{
-    font-size:15px;
+    font-size:12px;
 }
 
 .img{
     height:auto;
-    width:30%;
+    width:25%;
     margin:1rem;
 }
