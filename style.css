@@ -54,3 +54,17 @@ body,
     width:25%;
     margin:1rem;
 }
+
+.cartmenu{
+    display:flex;
+    justify-content: center;
+    height:100vh;
+}
+
+.cart{
+    display:flex;
+    width: 90%;
+    height:30%;
+    background-color: #FFC30B;
+    margin:3rem;
+}

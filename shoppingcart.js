@@ -22,9 +22,9 @@ shop = [
     {name: "Compound V", origin: "The Boys", cost: Math.floor(Math.random()*9999), image:`Compound-V.png`},
 ]
 
-/* cart = {}
+cart = {items: "", price:0}
 
-function ShoppingCart(){
+/* function ShoppingCart(){
     shop.forEach(shop => {i=1; console.log(`${shop.name}: ${shop.cost} lego studs`)})
 }
 
@@ -50,7 +50,7 @@ console.log(cart)
 
 function Filter(){}
 
-function Total(){} */
+function Total(){}  */
 
 
 /* console.log("test");
@@ -77,7 +77,7 @@ y.textContent="Hello World"; */
 function inject(){
     const cardmenu = document.querySelector(".cardsmenu");
     shop.forEach(shop => {
-    cardmenu.insertAdjacentHTML("beforeend", ` <div class="card">
+    cardmenu.insertAdjacentHTML("beforeend", ` <div class="card" data-item="${shop.name}" data-cost="${shop.cost}">
         <h2 class="title">${shop.name}</h2>
         <p class="desc">${shop.origin}</p>
         <p class="price">$: ${shop.cost}</p>        
@@ -86,8 +86,31 @@ function inject(){
         </div>`)
     });
 }
-
 inject();
+
+const buttons = document.querySelectorAll("button");
+//make sure to use a class instead
+/* console.log(buttons); */
+buttons.forEach((button)=>
+  button.addEventListener("click",function(event){
+    const nextitem = (event.target.closest(".card").getAttribute("data-item"));
+    const nextprice = (event.target.closest(".card").getAttribute("data-cost"));
+    cart.items += ` ${nextitem}`
+    cart.price += parseInt(nextprice)
+    console.log(cart)
+})
+);
+
+function injectCart(){
+    const cartmenu = document.querySelector(".cart");
+    cartmenu.insertAdjacentHTML("beforeend", `<h2>Cart</h2>`)
+    cart.forEach(items => {
+        cartmenu.insertAdjacentHTML("beforeend", `<h2>${items}</h2> `)
+    });
+}
+injectCart()
+
+
 
 
 
