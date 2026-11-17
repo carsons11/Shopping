@@ -63,8 +63,27 @@ body,
 
 .cart{
     display:flex;
+    align-items: center;
+    flex-direction: column;
     width: 90%;
-    height:30%;
+    height:50%;
     background-color: #FFC30B;
     margin:3rem;
+    padding:1rem;
+}
+
+.cart h2{
+    font-size: 3rem;
+}
+
+.cart-title{
+    align-self:baseline;
+    text-decoration: underline;
+    font-size: 2rem;
+    margin-left:2rem;
+}
+
+.item{
+    font-size:15px;
+    align-self: baseline;
 }

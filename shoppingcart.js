@@ -97,20 +97,17 @@ buttons.forEach((button)=>
     const nextprice = (event.target.closest(".card").getAttribute("data-cost"));
     cart.items += ` ${nextitem}`
     cart.totalprice += parseInt(nextprice)
-    console.log(cart)
+    const x = document.querySelector(".cart");
+    x.insertAdjacentHTML("beforeend", 
+        `<p class="item">${nextitem} $${nextprice}
+        <button id="remove">x</button> </p>`)
+    
 })
 );
 
-function injectCart(){
-    const cartmenu = document.querySelector(".cart");
-    cartmenu.insertAdjacentHTML("beforeend", `<h2>Cart</h2>`)
-    x = 0
+
     
-    /* cart.forEach(cart => {
-        cartmenu.insertAdjacentHTML("beforeend", `<h2> </h2> `)
-    }); */
-}
-injectCart()
+
 
 
 
