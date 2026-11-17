@@ -22,7 +22,7 @@ shop = [
     {name: "Compound V", origin: "The Boys", cost: Math.floor(Math.random()*9999), image:`Compound-V.png`},
 ]
 
-cart = {items: "", price:0}
+cart = {items: "", price:[], totalprice:0}
 
 /* function ShoppingCart(){
     shop.forEach(shop => {i=1; console.log(`${shop.name}: ${shop.cost} lego studs`)})
@@ -96,7 +96,7 @@ buttons.forEach((button)=>
     const nextitem = (event.target.closest(".card").getAttribute("data-item"));
     const nextprice = (event.target.closest(".card").getAttribute("data-cost"));
     cart.items += ` ${nextitem}`
-    cart.price += parseInt(nextprice)
+    cart.totalprice += parseInt(nextprice)
     console.log(cart)
 })
 );
@@ -104,9 +104,11 @@ buttons.forEach((button)=>
 function injectCart(){
     const cartmenu = document.querySelector(".cart");
     cartmenu.insertAdjacentHTML("beforeend", `<h2>Cart</h2>`)
-    cart.forEach(items => {
-        cartmenu.insertAdjacentHTML("beforeend", `<h2>${items}</h2> `)
-    });
+    x = 0
+    
+    /* cart.forEach(cart => {
+        cartmenu.insertAdjacentHTML("beforeend", `<h2> </h2> `)
+    }); */
 }
 injectCart()
 
