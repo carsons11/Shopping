@@ -22,7 +22,7 @@ shop = [
     {name: "Compound V", origin: "The Boys", cost: Math.floor(Math.random()*9999), image:`Compound-V.png`},
 ]
 
-cart = {items: "", price:[], totalprice:0}
+cart = {items: "",price:0}
 
 /* function ShoppingCart(){
     shop.forEach(shop => {i=1; console.log(`${shop.name}: ${shop.cost} lego studs`)})
@@ -84,7 +84,10 @@ function inject(){
         <img class="img" src="img/${shop.image}" alt="Doesn't work">
         <button id="btn">Add to Cart</button>
         </div>`)
+        
     });
+    const subtotal = document.querySelector(".total");
+    subtotal.insertAdjacentHTML("beforeend",`<p class="total-title">Subtotal: $${cart.price}</p>`)
 }
 inject();
 
@@ -96,12 +99,14 @@ buttons.forEach((button)=>
     const nextitem = (event.target.closest(".card").getAttribute("data-item"));
     const nextprice = (event.target.closest(".card").getAttribute("data-cost"));
     cart.items += ` ${nextitem}`
-    cart.totalprice += parseInt(nextprice)
+    cart.price += parseInt(nextprice)
     const x = document.querySelector(".cart");
     x.insertAdjacentHTML("beforeend", 
         `<p class="item">${nextitem} $${nextprice}
         <button id="remove">x</button> </p>`)
-    
+    const newTotal = document.querySelector('.total-title'); 
+    newTotal.textContent = `Subtotal: $${cart.price}`;
+
 })
 );
 

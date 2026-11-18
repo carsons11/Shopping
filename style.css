@@ -61,14 +61,23 @@ body,
     height:100vh;
 }
 
+.summary{
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    width: 90%;
+    height:60%;
+    background-color: #FFC30B;
+    margin:3rem;
+    padding:5px;
+}
 .cart{
     display:flex;
     align-items: center;
     flex-direction: column;
     width: 90%;
     height:50%;
-    background-color: #FFC30B;
-    margin:3rem;
+    margin:1rem;
     padding:1rem;
 }
 
@@ -80,10 +89,25 @@ body,
     align-self:baseline;
     text-decoration: underline;
     font-size: 2rem;
-    margin-left:2rem;
+    margin-top:3rem;
 }
 
 .item{
     font-size:15px;
     align-self: baseline;
+    margin-top:1rem;
+}
+
+
+.total{
+    display:flex;
+    flex-direction: column;
+    width: 90%;
+    height:50%;
+    margin:1rem;
+    padding:1rem;
+}
+
+.total-title{
+    font-size: 2rem;
 }
