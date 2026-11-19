@@ -35,6 +35,7 @@ body,
     width:40rem;
     height:30rem;
     margin: 4rem;
+    margin-bottom: 2rem;
     justify-content: center;
     align-items: center;
     flex-direction:column;
@@ -109,5 +110,14 @@ body,
 }
 
 .total-title{
+    font-size: 2rem;
+}
+
+.discount-box{
+    height:10%;
+    width:90%
+}
+
+.discount{
     font-size: 2rem;
 }

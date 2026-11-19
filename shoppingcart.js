@@ -82,7 +82,7 @@ function inject(){
         <p class="desc">${shop.origin}</p>
         <p class="price">$: ${shop.cost}</p>        
         <img class="img" src="img/${shop.image}" alt="Doesn't work">
-        <button id="btn">Add to Cart</button>
+        <button class="btn">Add to Cart</button>
         </div>`)
         
     });
@@ -91,7 +91,7 @@ function inject(){
 }
 inject();
 
-const buttons = document.querySelectorAll("button");
+const buttons = document.querySelectorAll(".btn");
 //make sure to use a class instead
 /* console.log(buttons); */
 buttons.forEach((button)=>
@@ -109,6 +109,21 @@ buttons.forEach((button)=>
 
 })
 );
+
+document.querySelector("form").addEventListener("submit", function (event) {
+    event.preventDefault();
+    console.log("submited form");
+    let y = document.querySelector("#coupon");
+    console.log(y.value);
+    if (y==="TypicalGamer"){
+        
+
+    }
+    y.value = ""; 
+    
+
+}
+)
 
 
     
