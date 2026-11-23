@@ -114,17 +114,27 @@ document.querySelector("form").addEventListener("submit", function (event) {
     event.preventDefault();
     console.log("submited form");
     let y = document.querySelector("#coupon");
+    let z = document.querySelector(".discount-box");
     console.log(y.value);
-    if (y==="TypicalGamer"){
-        
-
+    couponchecker = 0
+    if (couponchecker===0){
+        if (y.value==="typicalgamer" || y.value === "lebron"){
+            z.insertAdjacentHTML("beforeend",
+            `<p class="Discount-applied">Discount has been applied</p>`
+            )
+            couponchecker +=1
+        }
+    }
+    else if (couponchecker===1){
+        z.insertAdjacentHTML("beforeend",
+            `<p class="Discount-applied">Only 1 discount can be applied</p>`
+            )
     }
     y.value = ""; 
     
 
 }
 )
-
 
     
 
