@@ -112,25 +112,34 @@ buttons.forEach((button) =>
 
 document.querySelector("form").addEventListener("submit", function (event) {
     event.preventDefault();
-    console.log("submited form");
     let y = document.querySelector("#coupon");
     let z = document.querySelector(".discount-box");
     console.log(y.value);
     couponchecker = 0
-    if (couponchecker === 0) {
-        if (y.value === "typicalgamer" || y.value === "lebron") {
-            z.insertAdjacentHTML("beforeend",
-                `<p class="Discount-applied">Discount has been applied</p>`
-            )
-            couponchecker += 1
-        }
-    }
-    else if (couponchecker === 1) {
+    if (y.value !== "typicalgamer" & y.value !== "lebron") {
+        /* const paragraph = document.querySelector(".Discount-applied")
+        paragraph.remove */
         z.insertAdjacentHTML("beforeend",
-            `<p class="Discount-applied">Only 1 discount can be applied</p>`
-        )
+        `<p class="Discount-applied">Invalid discount</p>`)
+        y.value = "";
     }
-    y.value = "";
+    else if (couponchecker >= 1 & y.value === "typicalgamer" || y.value === "lebron") {
+        const paragraph = document.querySelector(".Discount-applied")
+        paragraph.remove
+        z.insertAdjacentHTML("beforeend",
+        `<p class="Discount-applied">You can only apply one discount</p>`)
+        y.value = "";
+    }
+    else if  (couponchecker === 0 & y.value === "typicalgamer" || y.value === "lebron") {
+        const paragraph = document.querySelector(".Discount-applied")
+        paragraph.remove
+        z.insertAdjacentHTML("beforeend",
+            `<p class="Discount-applied">Discount has been applied</p>`)
+        couponchecker += 1
+        y.value = "";
+    }
+    
+    
 
 
 }
