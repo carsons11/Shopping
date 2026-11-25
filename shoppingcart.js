@@ -22,7 +22,7 @@ shop = [
     { name: "Compound V", origin: "The Boys", cost: Math.floor(Math.random() * 9999), image: `Compound-V.png` },
 ]
 
-cart = { items: "", price: 0 }
+cart = { items: [], price: 0 }
 
 /* function ShoppingCart(){
     shop.forEach(shop => {i=1; console.log(`${shop.name}: ${shop.cost} lego studs`)})
@@ -91,10 +91,10 @@ function inject() {
 }
 inject();
 
-const buttons = document.querySelectorAll(".btn");
+/* const buttons = document.querySelectorAll(".btn"); */
 //make sure to use a class instead
 /* console.log(buttons); */
-buttons.forEach((button) =>
+/* buttons.forEach((button) =>
     button.addEventListener("click", function (event) {
         const nextitem = (event.target.closest(".card").getAttribute("data-item"));
         const nextprice = (event.target.closest(".card").getAttribute("data-cost"));
@@ -108,42 +108,75 @@ buttons.forEach((button) =>
         newTotal.textContent = `Subtotal: $${cart.price}`;
 
     })
-);
+); */
+const buttons = document.querySelectorAll("button");
+buttons.forEach((button)=>
+  button.addEventListener("click",function(event){
+    const nextItem = (event.target.closest(".card").getAttribute("data-item"));
+    const nextPrice = (event.target.closest(".card").getAttribute("data-cost"));
+    cart.price += parseInt(nextPrice)
+    listItems = cart.items
+    console.log(listItems)
+    dupeItems = false
+    listItems.forEach(cart =>{
+        if(nextItem === cart){
+            console.log('dupe')
+            const change = document.querySelector(`#${nextItem}`)
+            change.dataset.amount ++
+            change.textContent= `${nextItem} $${nextPrice} x${change.dataset.amount}`  
+            change.insertAdjacentHTML("beforeend", `<button id="remove">x</button> `)
+            dupeItems = true
+            const newTotal = document.querySelector('.total-title');
+            newTotal.textContent = `Subtotal: $${cart.price}`;
+        } else{
+            console.log('not dupe')
+    }})
+  if(dupeItems === false){
+    const x = document.querySelector(".cart");
+    x.insertAdjacentHTML("beforeend",
+        `<p id="${nextItem}" data-buy="${nextItem}" data-amount=1> ${nextItem} $${nextPrice}
+        <button id="remove">x</button> </p>`)
+    const newTotal = document.querySelector('.total-title');
+    newTotal.textContent = `Subtotal: $${cart.price}`;
+    cart.items.push(`${nextItem}`)
+    }}));
 
+
+couponchecker = 0
 document.querySelector("form").addEventListener("submit", function (event) {
     event.preventDefault();
     let y = document.querySelector("#coupon");
     let z = document.querySelector(".discount-box");
     console.log(y.value);
-    couponchecker = 0
     if (y.value !== "typicalgamer" & y.value !== "lebron") {
-        /* const paragraph = document.querySelector(".Discount-applied")
-        paragraph.remove */
         z.insertAdjacentHTML("beforeend",
         `<p class="Discount-applied">Invalid discount</p>`)
         y.value = "";
-    }
-    else if (couponchecker >= 1 & y.value === "typicalgamer" || y.value === "lebron") {
-        const paragraph = document.querySelector(".Discount-applied")
-        paragraph.remove
-        z.insertAdjacentHTML("beforeend",
-        `<p class="Discount-applied">You can only apply one discount</p>`)
-        y.value = "";
-    }
-    else if  (couponchecker === 0 & y.value === "typicalgamer" || y.value === "lebron") {
-        const paragraph = document.querySelector(".Discount-applied")
-        paragraph.remove
-        z.insertAdjacentHTML("beforeend",
+    } 
+    else if (y.value === "typicalgamer" || y.value === "lebron") {   
+        if (couponchecker >= 1){
+            z.insertAdjacentHTML("beforeend",
+            `<p class="Discount-applied">You can only apply one discount</p>`)
+            y.value = "";
+        }
+        else {      
+            z.insertAdjacentHTML("beforeend",
             `<p class="Discount-applied">Discount has been applied</p>`)
-        couponchecker += 1
-        y.value = "";
+            couponchecker += 1
+            y.value = "";
+        }       
     }
-    
-    
-
-
 }
 )
+
+    
+
+    const paragraph = document.querySelector(".Discount-applied")
+        paragraph.remove()
+
+
+
+  
 
 
 
