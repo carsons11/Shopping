@@ -171,8 +171,7 @@ document.querySelector("form").addEventListener("submit", function (event) {
 
     
 
-    const paragraph = document.querySelector(".Discount-applied")
-        paragraph.remove()
+
 
 
 
